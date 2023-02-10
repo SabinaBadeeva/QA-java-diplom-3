@@ -16,8 +16,6 @@ public class PrivateAccount {
 
     private By nameField = By.cssSelector("ul > li:nth-child(1) > div > div > input"); // инпут Имя
     private By emailField = By.xpath("//label[text()='Логин']/following-sibling::input"); // инпут email
-    private By accountProfile = By.xpath(".//*/div/nav/ul/li[1]/a");// Профиль
-    private By historyOrders = By.xpath(".//*/div/nav/ul/li[2]/a");// История заказов
     private By accountExit = By.cssSelector("nav > ul > li:nth-child(3) > button"); // Выйти
 
     // Метод получения значения поля Name

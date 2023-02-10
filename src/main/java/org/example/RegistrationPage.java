@@ -36,7 +36,7 @@ public class RegistrationPage {
         getPrimaryRegistration();}
     // клик по кнопке Зарегистрироваться после заполнения инпутов
     public void getPrimaryRegistration(){driver.findElement(primaryRegistration).click();}
-    // Проверка - при некорректном пароле выдает ошибку
+    // Проверка -  при некорректном пароле выдает ошибку
     public void statusOfPasswordMessage(String enterButtonText) {
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.textToBePresentInElementLocated( incorrectPasswordMessage, enterButtonText));}

@@ -46,7 +46,7 @@ public class AuthorisationPage {
     public void clickRecoverPassword() {
         driver.findElement(recoverPassword).click();}
 
-    //Войти через Вспомнили пароль
+    //Войти - через Вспомнили пароль
     public void clickRememberPassword() {
         driver.findElement(rememberPassword).click();
     }

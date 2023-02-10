@@ -26,7 +26,7 @@ public class TransferButton {
     private By fillingsTitle = By.xpath("//h2[text()='Начинки']");
 
 
-    // метод -  КЛИКАЕМ по Логотипу
+    // метод -  КЛИК по Логотипу
     public void headerLogoIsClick() {
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(stellarBurgerLogo)).click();
     }

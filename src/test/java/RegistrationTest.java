@@ -24,7 +24,7 @@ public class RegistrationTest extends Resources {
 
     @Test
     @Description("При минимальном пароле выдает ошибку для некорректного пароля")
-    @Step("Регистрация с минимальным паролем 6 символов, через кнопку Личный кабинет")
+    @Step("Регистрация с минимальным паролем 6 символов через кнопку Личный кабинет")
     public void registrationIncorrectPasswordTest() {
         //Регистрация через кнопку "Личный кабинет"
         mainPage.clickEnterAccountButton();

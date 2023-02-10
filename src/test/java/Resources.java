@@ -44,8 +44,8 @@ public class Resources {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         mainPage = new MainPage(driver);
         privateAccount = new PrivateAccount(driver);
-        registrationPage = new RegistrationPage(driver);
         authorisationPage = new AuthorisationPage(driver);
+        registrationPage = new RegistrationPage(driver);
         transfer= new TransferButton(driver);}
 
     protected static RequestSpecification specification() throws InterruptedException{

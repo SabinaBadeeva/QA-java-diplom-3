@@ -101,7 +101,7 @@ public class TransferTest extends Resources {
         assertEquals(CURRENTURLLOGO, driver.getCurrentUrl());}
 
     @Test
-    @Description("Проверить,что отображается блок Булки")
+    @Description("Проверить -что отображается блок Булки")
     @Step("Проверить, что работает переход к разделу Булки")
     public void getClickBuns() {
         //Клик по разделу Булки
@@ -110,7 +110,7 @@ public class TransferTest extends Resources {
         assertTrue("Element is invisible", transfer.isHeaderBunsVisible());}
 
     @Test
-    @Description("Проверить,что работает скролл и отображается блок Соусы")
+    @Description("Проверить -что работает скролл и отображается блок Соусы")
     @Step("Проверить, что работает переход к разделу Соусы")
     public void getClickSauces() {
         //Клик по разделу Соусы
