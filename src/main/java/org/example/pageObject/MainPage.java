@@ -16,6 +16,7 @@ public class MainPage {
     //Методы
     // клик по кнопке Личный кабинет
     public void clickPersonalAccountButton(){driver.findElement(personalAccount).click();}
+    // клик по кнопке Войти в аккаунт
     public void clickEnterAccountButton(){driver.findElement(enterAccountButton).click();}
 
 }

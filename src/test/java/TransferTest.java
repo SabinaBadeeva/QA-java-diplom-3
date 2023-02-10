@@ -97,7 +97,7 @@ public class TransferTest extends Resources {
         //Нажать Выход
         privateAccount.clickLogOutButton();
         Resources.specification();
-        //Проверить, что вышли на страницу Авторизации
+        //Проверить, вышли на страницу Авторизации
         assertEquals(CURRENTURLLOGO, driver.getCurrentUrl());}
 
     @Test

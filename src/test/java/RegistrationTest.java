@@ -8,7 +8,7 @@ public class RegistrationTest extends Resources {
 
     @Test
     @Description("При успешной регистрации появляется форма авторизации с кнопкой Войти")
-    @Step("Регистрация с минимальным паролем 6 символов, через кнопку Личный кабинет")
+    @Step("Регистрация с минимальным паролем 6 символов - через кнопку Личный кабинет")
     public void registrationTest() {
         //Регистрация через кнопку "Войти в аккаунт"
         mainPage.clickPersonalAccountButton();

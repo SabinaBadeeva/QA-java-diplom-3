@@ -38,7 +38,7 @@ public class AuthorisationPage {
     public void headerEnterButtonIsClick() {
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(enterButton)).click();}
 
-    //ОЖИДАНИЕ прогрузки ДАННЫХ
+    //ОЖИДАНИЕ прогрузки данных
     public void waitForLoadDataAccount() {
         new WebDriverWait(driver, 10).until(driver -> (driver.findElement(enterButton).getText() != null && !driver.findElement(enterButton).getText().isEmpty()));}
 

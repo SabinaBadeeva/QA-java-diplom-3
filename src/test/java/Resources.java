@@ -18,8 +18,9 @@ public class Resources {
     public MainPage mainPage;
     public PrivateAccount privateAccount;
     public RegistrationPage registrationPage;
-    public AuthorisationPage authorisationPage;
     public TransferButton transfer;
+    public AuthorisationPage authorisationPage;
+
     public static final String URL = "https://stellarburgers.nomoreparties.site/";
     public static final String  CURRENTURLLOGO = "https://stellarburgers.nomoreparties.site/login";
     public static final String NAME = RandomStringUtils.randomAlphabetic(6);
