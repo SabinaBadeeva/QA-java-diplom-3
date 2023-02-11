@@ -122,7 +122,7 @@ public class TransferTest extends Resources {
     }
 
     @Test
-    @Description("Проверить,что что работает скролл и отображается блок Начинки")
+    @Description("Проверить, что работает скролл и отображается блок Начинки")
     @Step("Проверить, что работает переход к разделу Начинки")
     public void getClickFillings() {
         // клик по разделу Начинки

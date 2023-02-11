@@ -53,7 +53,7 @@ public class Resources {
         return null;
     }
     @After
-    @Step("Quit browser")
+    @Step("Quit_browser")
     public void logOut(){
         driver.quit();
     }
