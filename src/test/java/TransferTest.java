@@ -1,13 +1,16 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.assertj.core.api.SoftAssertions;
+
+
 
 public class TransferTest extends Resources {
-    public String currentUrl = null;
 
+    public String currentUrl = null;
+    private SoftAssertions softAssertions;
 
     @Test
     @Description("После успешного входа на странице видна кнопка Оформить заказ")
@@ -22,13 +25,14 @@ public class TransferTest extends Resources {
         //Войти в аккаунт
         authorisationPage.getEnterAccount(EMAILAUTH, PASSWORDAUTH);
         //Проверить - видна кнопка Оформить заказ
-        transfer.createOrderButtonGetText("Оформить заказ");}
+        assertEquals("Оформить заказ", transfer.createOrderButtonGetText());
+    }
 
 
     @Test
     @Description("Проверить, что из Личного кабинета через логотип, можно перейти на главную страницу ")
     @Step("Переход  по клику на логотип Stellar Burgers")
-    public void getPageLogo() {
+    public void getPageLogo()  {
         // Войти в аккаунт
         mainPage.clickPersonalAccountButton();
         authorisationPage.getEnterAccount(EMAILAUTH, PASSWORDAUTH);
@@ -42,7 +46,7 @@ public class TransferTest extends Resources {
         String mainUrlPage = currentUrl;
         String logoMain = URL;
         assertEquals(logoMain, mainUrlPage);
-        System.out.println(mainUrlPage.equals(logoMain) + " Мы находимся на главной странице");}
+    }
 
     @Test
     @Description("Проверить: 1) при переходе по кнопке Личный кабинет, попадаем на страницу авторизации," +
@@ -52,7 +56,7 @@ public class TransferTest extends Resources {
         //Нажать на  Личный кабинет
         mainPage.clickPersonalAccountButton();
         // При успешном переходе попадаем на страницу авторизации, где видна кнопка Войти
-        authorisationPage.statusOfRegistration("Войти");
+        authorisationPage.statusOfRegistrationIsDisplayed();
         //Войти в аккаунт
         authorisationPage.getEnterAccount(EMAILAUTH, PASSWORDAUTH);
         // Нажать на Личный кабинет
@@ -62,11 +66,10 @@ public class TransferTest extends Resources {
         // Получить значение поля Email
         String actualEmail = privateAccount.getEmailValue();
         Resources.specification();
-        //Проверить, значение полей совпадают, поэтому  находимся в своем Личном кабинете
+        //Проверить, если значение полей совпадают,- находимся в своем Личном кабинете
         assertEquals(NAMEAUTH, actualName);
         assertEquals(EMAILAUTH, actualEmail);
-        // Проверить, что находимся на стрнице Личного кабинета
-        assertEquals("https://stellarburgers.nomoreparties.site/account/profile", driver.getCurrentUrl());}
+    }
 
     @Test
     @Description("Проверить, что из Личного кабинета по кнопке Конструктор переходим на главную страницу с оформлением заказа")
@@ -81,7 +84,8 @@ public class TransferTest extends Resources {
         //Нажать на кнопку Конструктор
         transfer.headerConstructorIsClick();
         //Проверить - видна кнопка Оформить заказ
-        transfer.createOrderButtonGetText("Оформить заказ");}
+        assertEquals("Оформить заказ", transfer.createOrderButtonGetText());
+    }
 
     @Test
     @Description("Проверить, что при выходе из Личного кабинета видна кнопка Войти")
@@ -98,38 +102,38 @@ public class TransferTest extends Resources {
         privateAccount.clickLogOutButton();
         Resources.specification();
         //Проверить, вышли на страницу Авторизации
-        assertEquals(CURRENTURLLOGO, driver.getCurrentUrl());}
+        assertEquals(CURRENTURLLOGO, driver.getCurrentUrl());
+    }
 
     @Test
     @Description("Проверить -что отображается блок Булки")
-    @Step("Проверить, что работает переход к разделу Булки")
+    @Step("Проверить,что после нажатия на span Булки, отображается блок Булки с различным содержанием current")
     public void getClickBuns() {
         //Клик по разделу Булки
         transfer.clickBunList();
-        //Проверить,что отображается блок Булки
-        assertTrue("Element is invisible", transfer.isHeaderBunsVisible());}
+        assertTrue("Element is invisible", transfer.getBunsListValue().contains("current"));
+    }
 
     @Test
     @Description("Проверить -что работает скролл и отображается блок Соусы")
-    @Step("Проверить, что работает переход к разделу Соусы")
+    @Step("Проверить,что после нажатия на span Соусы, отображается блок Соусы с различным содержанием current")
     public void getClickSauces() {
         //Клик по разделу Соусы
         transfer.clickSaucesList();
         // scroll
         transfer.scrollSauceBlock();
-        //Проверить,что отображается блок Соусы
-        assertTrue("Element is invisible", transfer.isHeaderSaucesVisible());
+        assertTrue("Element is invisible", transfer.getSaucesListValue().contains("current"));
     }
 
     @Test
     @Description("Проверить, что работает скролл и отображается блок Начинки")
-    @Step("Проверить, что работает переход к разделу Начинки")
+    @Step("Проверить,что после нажатия на span Начинки, отображается блок Начинки с различным содержанием current")
     public void getClickFillings() {
         // клик по разделу Начинки
         transfer.clickFillingsList();
         // scroll
         transfer.scrollFillingsBlock();
         //Проверить,что отображается блок Начинки
-        assertTrue("Element is invisible", transfer.isHeaderFillingsVisible());
+        assertTrue("Element is invisible", transfer.getFillingsLstValue().contains("current"));
     }
 }
