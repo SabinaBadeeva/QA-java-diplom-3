@@ -11,7 +11,7 @@ public class RegistrationPage {
         this.driver = driver;
     }
     //PageObjects
-    private By registratoin = By.className("Auth_link__1fOlj"); //href Зарегистрироваться
+    private By registration = By.xpath("//div/p[1]/a"); //href Зарегистрироваться
     private By nameInput = By.xpath("//fieldset[1]/div/div/input");
     private By emailInput = By.xpath("//fieldset[2]/div/div/input");
     private By passwordInput = By.xpath("//fieldset[3]/div/div/input");
@@ -20,7 +20,7 @@ public class RegistrationPage {
 
     //Методы
     // клик по кнопке Зарегистрироваться
-    public void clickRegistrationHref(){driver.findElement(registratoin).click();}
+    public void clickRegistrationHref(){driver.findElement(registration).click();}
     //Метод регистрации с заполнением инпутов и нажатием на кнопку Зарегистрироваться
     public void setUsername(String name) {driver.findElement(nameInput).sendKeys(name);}
     public void setEmail(String email) {
@@ -37,9 +37,9 @@ public class RegistrationPage {
     // клик по кнопке Зарегистрироваться после заполнения инпутов
     public void getPrimaryRegistration(){driver.findElement(primaryRegistration).click();}
     // Проверка -  при некорректном пароле выдает ошибку
-    public void statusOfPasswordMessage(String enterButtonText) {
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.textToBePresentInElementLocated( incorrectPasswordMessage, enterButtonText));}
+    public String statusOfPasswordMessage(){
+        return driver.findElement(incorrectPasswordMessage).getText();
+    }
 }
 
 
