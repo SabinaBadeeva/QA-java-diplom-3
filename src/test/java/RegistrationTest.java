@@ -11,20 +11,18 @@ public class RegistrationTest extends Resources {
     @Test
     @Description("При успешной регистрации появляется форма авторизации с кнопкой Войти")
     @Step("Регистрация с минимальным паролем 6 символов - через кнопку Личный кабинет")
-    public void registrationTest() throws InterruptedException {
+    public void registrationTest() {
         //Регистрация через кнопку "Войти в аккаунт"
-        Resources.specification();
         mainPage.clickPersonalAccountButton();
-        Resources.specification();
         //Нажать Зарегистрироваться
         registrationPage.clickRegistrationHref();
-        Resources.specification();
         // Заполнить инпуты
         registrationPage.registration(NAME, EMAIL, PASSWORD);
         // Ожидание загрузки данных
         authorisationPage.waitForLoadDataAccount();
         // Проверить, при успешной регистрации видна кнопка Войти
-        assertEquals("Войти", authorisationPage.statusOfRegistration());}
+        assertEquals("Войти", authorisationPage.statusOfRegistration());
+    }
 
 
     @Test
@@ -38,5 +36,6 @@ public class RegistrationTest extends Resources {
         // Заполнить инпуты
         registrationPage.registration(NAME, EMAIL, PASSWORD_2);
         //Проверка ошибки пароля
-        assertEquals("Некорректный пароль",registrationPage.statusOfPasswordMessage());}
+        assertEquals("Некорректный пароль", registrationPage.statusOfPasswordMessage());
+    }
 }
