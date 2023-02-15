@@ -29,11 +29,11 @@ public class AuthorisationPage {
         headerEnterButtonIsClick();}
 
     //Метод проверки успешной регистрации (при успешной регистрации видна кнопка Войти)
-    public void statusOfRegistration(String enterButtonText) {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.textToBePresentInElementLocated(enterButton, enterButtonText));}
-
-    public void statusOfRegistrationVisible() {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(enterButton));}
+    public String statusOfRegistration() {
+        return driver.findElement(enterButton).getText();}
+    public void statusOfRegistrationIsDisplayed(){
+        driver.findElement(enterButton).isDisplayed();
+    }
 
     public void headerEnterButtonIsClick() {
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(enterButton)).click();}

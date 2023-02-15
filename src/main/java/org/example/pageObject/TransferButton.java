@@ -18,9 +18,9 @@ public class TransferButton {
     private By constructorButton = By.xpath(".//p[contains(text(),\"Конструктор\")]");//Конструктор
     private By createOrderButton = By.xpath(".//button[contains(text(),\"Оформить заказ\")]"); //Оформить заказ
     // локаторы Конструктора
-    private By bunsList = By.xpath("//span[text()='Булки']");
-    private By saucesList = By.cssSelector("section.BurgerIngredients_ingredients__1N8v2 > div:nth-child(2) > div:nth-child(2) > span");
-    private By fillingsList = By.cssSelector("section.BurgerIngredients_ingredients__1N8v2 > div:nth-child(2) > div:nth-child(3) > span");
+    private By bunsList = By.xpath("//span[text()='Булки']/..");
+    private By saucesList = By.xpath("//span[text()='Соусы']/..");
+    private By fillingsList = By.xpath("//span[text()='Начинки']/..");
     private By bunsTitle = By.cssSelector("section.BurgerIngredients_ingredients__1N8v2 > div:nth-child(2)");
     private By saucesTitle = By.xpath("//h2[text()='Соусы']");
     private By fillingsTitle = By.xpath("//h2[text()='Начинки']");
@@ -38,9 +38,8 @@ public class TransferButton {
     }
 
     //Метод проверяет,что на странице содержится элемент с нужным текстом
-    public void createOrderButtonGetText(String orderButtonText) {
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.textToBePresentInElementLocated(createOrderButton, orderButtonText));
+    public String createOrderButtonGetText() {
+        return driver.findElement(createOrderButton).getText();
     }
 
     //Клики по разделам Контейнера
@@ -55,6 +54,19 @@ public class TransferButton {
     public void clickFillingsList() {
         driver.findElement(fillingsList);
     }
+
+    public String getBunsListValue() {
+        return driver.findElement(bunsList).getAttribute("class");
+    }
+
+    public String getSaucesListValue() {
+        return driver.findElement(saucesList).getAttribute("class");
+    }
+
+    public String getFillingsLstValue() {
+        return driver.findElement(fillingsTitle).getAttribute("class");
+    }
+
 
     //Методы отображения заголовков Контейнера
     public boolean isHeaderBunsVisible() {

@@ -2,6 +2,8 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class RegistrationTest extends Resources {
 
@@ -9,17 +11,20 @@ public class RegistrationTest extends Resources {
     @Test
     @Description("При успешной регистрации появляется форма авторизации с кнопкой Войти")
     @Step("Регистрация с минимальным паролем 6 символов - через кнопку Личный кабинет")
-    public void registrationTest() {
+    public void registrationTest() throws InterruptedException {
         //Регистрация через кнопку "Войти в аккаунт"
+        Resources.specification();
         mainPage.clickPersonalAccountButton();
+        Resources.specification();
         //Нажать Зарегистрироваться
         registrationPage.clickRegistrationHref();
+        Resources.specification();
         // Заполнить инпуты
         registrationPage.registration(NAME, EMAIL, PASSWORD);
         // Ожидание загрузки данных
         authorisationPage.waitForLoadDataAccount();
         // Проверить, при успешной регистрации видна кнопка Войти
-        authorisationPage.statusOfRegistration("Войти");}
+        assertEquals("Войти", authorisationPage.statusOfRegistration());}
 
 
     @Test
@@ -33,5 +38,5 @@ public class RegistrationTest extends Resources {
         // Заполнить инпуты
         registrationPage.registration(NAME, EMAIL, PASSWORD_2);
         //Проверка ошибки пароля
-        registrationPage.statusOfPasswordMessage("Некорректный пароль");}
+        assertEquals("Некорректный пароль",registrationPage.statusOfPasswordMessage());}
 }

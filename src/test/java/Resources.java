@@ -1,5 +1,4 @@
 import io.qameta.allure.Step;
-import io.restassured.specification.RequestSpecification;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.example.RegistrationPage;
 import org.example.pageObject.AuthorisationPage;
@@ -23,6 +22,7 @@ public class Resources {
 
     public static final String URL = "https://stellarburgers.nomoreparties.site/";
     public static final String  CURRENTURLLOGO = "https://stellarburgers.nomoreparties.site/login";
+    public static final String CURRENTACCAUNT = "https://stellarburgers.nomoreparties.site/account/profile";
     public static final String NAME = RandomStringUtils.randomAlphabetic(6);
     public static final String EMAIL = RandomStringUtils.randomAlphabetic(5) + "@yandex.ru";
     public static final String PASSWORD = "yandex01234";
@@ -39,18 +39,17 @@ public class Resources {
         ChromeOptions options = new ChromeOptions();
         options.setBinary("C:\\tools\\yandex\\Yandex.exe");
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.get(URL);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get(URL);
         mainPage = new MainPage(driver);
         privateAccount = new PrivateAccount(driver);
         authorisationPage = new AuthorisationPage(driver);
         registrationPage = new RegistrationPage(driver);
         transfer= new TransferButton(driver);}
 
-    protected static RequestSpecification specification() throws InterruptedException{
+    public static void specification() throws InterruptedException{
         Thread.sleep(2000);
-        return null;
     }
     @After
     @Step("Quit_browser")
